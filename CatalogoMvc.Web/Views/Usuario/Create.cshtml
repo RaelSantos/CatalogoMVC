@@ -1,0 +1,35 @@
+﻿@model CatalogoMvc.Web.Models.Usuario.EditarUsuarioViewModel
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+@using (Html.BeginForm())
+{
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+<div class="alert alert-danger" role="alert">
+    @*@Html.ValidationMessage("ErroDefault")*@
+    @Html.ValidationSummary()
+</div>
+
+   
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <h4>Adicionar usuário</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.Partial("_EditorPartial");
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

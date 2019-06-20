@@ -1,0 +1,29 @@
+﻿@model CatalogoMvc.Web.Models.Usuario.EditarUsuarioViewModel
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editando</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Usuário</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      
+        @Html.HiddenFor(x => x.Id);
+        @Html.Partial("_EditorPartial", Model);
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
